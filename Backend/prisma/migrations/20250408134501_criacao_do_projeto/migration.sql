@@ -18,7 +18,6 @@ CREATE TABLE "books" (
     "publication_year" INTEGER NOT NULL,
     "quantity_available" INTEGER NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "user_id" TEXT NOT NULL,
 
     CONSTRAINT "books_pkey" PRIMARY KEY ("id")
 );
@@ -30,15 +29,13 @@ CREATE TABLE "loans" (
     "book_id" TEXT NOT NULL,
     "loan_date" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "return_date" TIMESTAMP(3),
+    "status" TEXT NOT NULL DEFAULT 'active',
 
     CONSTRAINT "loans_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
 CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
-
--- AddForeignKey
-ALTER TABLE "books" ADD CONSTRAINT "books_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "loans" ADD CONSTRAINT "loans_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
