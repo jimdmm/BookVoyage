@@ -2,11 +2,14 @@
 	"name": "backend",
 	"version": "1.0.0",
 	"main": "index.js",
+	"type": "module",
 	"scripts": {
 		"start:dev": "tsx watch src/server.ts",
 		"start": "node build/server.js",
 		"build": "tsup src --out-dir build",
-		"lint": "npx @biomejs/biome check --write ."
+		"lint": "npx @biomejs/biome check --write .",
+		"test": "vitest run",
+		"test:watch": "vitest"
 	},
 	"keywords": [],
 	"author": "",
@@ -14,11 +17,13 @@
 	"description": "",
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
+		"@types/bcrypt": "5.0.2",
 		"@types/node": "^22.13.11",
 		"prisma": "^6.5.0",
 		"tsup": "^8.4.0",
 		"tsx": "^4.19.3",
 		"typescript": "^5.8.2",
+		"vite-tsconfig-paths": "5.1.4",
 		"vitest": "^3.0.9"
 	},
 	"dependencies": {
