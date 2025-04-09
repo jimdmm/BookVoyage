@@ -6,7 +6,6 @@ export class InMemoryBooksRepository implements IBooksRepository {
 	public books: Book[] = [];
 
 	async create({
-		id,
 		title,
 		author,
 		isbn,
@@ -14,11 +13,11 @@ export class InMemoryBooksRepository implements IBooksRepository {
 		quantity_available,
 	}: Prisma.BookCreateInput): Promise<Book> {
 		const book = {
-			id: id ?? randomUUID(),
+			id: randomUUID(),
 			title: title,
 			author: author,
 			isbn: isbn,
-			publication_year: Number(publication_year),
+			publication_year: new Date(publication_year).getFullYear(),
 			quantity_available: Number(quantity_available),
 			created_at: new Date(),
 		};
@@ -28,9 +27,51 @@ export class InMemoryBooksRepository implements IBooksRepository {
 		return book;
 	}
 
+	async update(
+		id: string,
+		bookUpdateInput: Partial<Book>,
+	): Promise<Book | null> {
+		const bookIndex = this.books.findIndex((book) => book.id === id);
+
+		if (bookIndex === -1) {
+			return null;
+		}
+
+		const currentBook = this.books[bookIndex];
+
+		const updatedBook: Book = {
+			...currentBook,
+			...bookUpdateInput,
+			publication_year:
+				bookUpdateInput.publication_year !== undefined
+					? Number(bookUpdateInput.publication_year)
+					: currentBook.publication_year,
+
+			quantity_available:
+				bookUpdateInput.quantity_available !== undefined
+					? Number(bookUpdateInput.quantity_available)
+					: currentBook.quantity_available,
+		};
+
+		this.books[bookIndex] = updatedBook;
+
+		return updatedBook;
+	}
+
+	async delete(id: string): Promise<boolean> {
+		const bookIndex = this.books.findIndex((book) => book.id === id);
+
+		if (bookIndex === -1) {
+			return false;
+		}
+
+		this.books.splice(bookIndex, 1);
+		return true;
+	}
+
 	async searchMany(query: string, page: number): Promise<Book[]> {
 		return this.books
 			.filter((book) => book.title.includes(query))
-			.slice((page - 1) * 20, page * 20);
+			.slice((page - 1) * 10, page * 10);
 	}
 }

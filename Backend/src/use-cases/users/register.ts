@@ -1,6 +1,6 @@
 import type { IUsersRepository } from "@/repositories/users-repository";
 import type { User } from "@prisma/client";
-import { UserAlreadyExistsError } from "./errors/user-already-exists-error";
+import { UserAlreadyExistsError } from "../errors/user-already-exists-error";
 import bcrypt from "bcrypt";
 
 interface RegisterUseCaseRequest {
