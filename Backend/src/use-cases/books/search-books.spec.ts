@@ -81,8 +81,6 @@ describe("Search Books Use Case", () => {
 			page: 2,
 		});
 
-		console.log(books);
-
 		expect(books).toHaveLength(2);
 		expect(books).toEqual([
 			expect.objectContaining({ title: "JavaScript 11" }),
