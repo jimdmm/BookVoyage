@@ -11,10 +11,8 @@ export class InMemoryLoansRepository implements ILoansRepository {
 		return loan ?? null;
 	}
 
-	async findManyByUserId(userId: string, page: number): Promise<Loan[]> {
-		return this.loans
-			.filter((loan) => loan.user_id === userId)
-			.slice((page - 1) * 10, page * 10);
+	async findManyByUserId(userId: string): Promise<Loan[]> {
+		return this.loans.filter((loan) => loan.user_id === userId);
 	}
 
 	async create({
@@ -31,12 +29,42 @@ export class InMemoryLoansRepository implements ILoansRepository {
 			user_id: user_id,
 			book_id: book_id,
 			loan_date: loanDate,
-			return_date: returnDate,
-			status,
+			return_date: null,
+			status: status || "active",
 		} as Loan;
 
 		this.loans.push(loan);
 
 		return loan;
+	}
+
+	async updateStatus(
+		id: string,
+		status: string,
+		returnDate?: Date,
+	): Promise<Loan | null> {
+		const loanIndex = this.loans.findIndex((loan) => loan.id === id);
+
+		if (loanIndex === -1) {
+			return null;
+		}
+
+		const loan = this.loans[loanIndex];
+
+		const updatedLoan: Loan = {
+			...loan,
+			status,
+			return_date: returnDate ?? loan.return_date,
+		};
+
+		this.loans[loanIndex] = updatedLoan;
+
+		return updatedLoan;
+	}
+
+	async countActiveLoansFromUser(userId: string): Promise<number> {
+		return this.loans.filter(
+			(loan) => loan.user_id === userId && loan.status === "active",
+		).length;
 	}
 }

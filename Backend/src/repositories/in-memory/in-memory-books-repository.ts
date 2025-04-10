@@ -5,6 +5,12 @@ import type { IBooksRepository } from "../books-repository";
 export class InMemoryBooksRepository implements IBooksRepository {
 	public books: Book[] = [];
 
+	async findById(id: string): Promise<Book | null> {
+		const book = this.books.find((book) => book.id === id);
+
+		return book ?? null;
+	}
+
 	async create({
 		title,
 		author,
