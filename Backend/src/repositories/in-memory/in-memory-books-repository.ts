@@ -71,7 +71,13 @@ export class InMemoryBooksRepository implements IBooksRepository {
 
 	async searchMany(query: string, page: number): Promise<Book[]> {
 		return this.books
-			.filter((book) => book.title.includes(query))
+			.filter(
+				(book) =>
+					book.title.includes(query) ||
+					book.author.includes(query) ||
+					book.isbn.includes(query) ||
+					book.publication_year.toString().includes(query),
+			)
 			.slice((page - 1) * 10, page * 10);
 	}
 }

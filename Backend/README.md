@@ -6,9 +6,9 @@ BookVoyage App
 - [x] Os usuários poderão se cadastrar no sistema.
 - [ ] Os usuários poderão se autenticar no sistema.
 - [x] Os Administradores poderão adicionar, editar e remover livros do sistema.
-- [ ] Os usuários poderão buscar os livros por título, autor, ISBN ou categoria.
+- [x] Os usuários poderão buscar os livros por título ou autor.
 - [ ] Os usuários poderão emprestar os livros disponíveis
-- [ ] Os usuários poderão visualizar os detalhes de seu impréstimo
+- [ ] Os usuários poderão visualizar os detalhes de seu empréstimo
 - [ ] Os usuários poderão devolver os livros emprestados.
 - [ ] O sistema deve atualizar a quantidade disponível do livro após o empréstimo.
 - [ ] O sistema deve atualizar o status do empréstimo e a quantidade disponível do livro.
