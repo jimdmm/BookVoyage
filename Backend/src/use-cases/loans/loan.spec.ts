@@ -2,10 +2,10 @@ import { expect, describe, it, beforeEach } from "vitest";
 import { InMemoryLoansRepository } from "@/repositories/in-memory/in-memory-loans-repository";
 import { InMemoryBooksRepository } from "@/repositories/in-memory/in-memory-books-repository";
 import { InMemoryUsersRepository } from "@/repositories/in-memory/in-memory-users-repository";
-import { LoanUseCase } from "./loan";
 import { ResourceNotFoundError } from "../errors/resource-not-found-error";
 import { UserLoanLimitError } from "../errors/user-loan-limit-error";
 import { BookNotAvailableError } from "../errors/book-not-avaliable-error";
+import { LoanUseCase } from "./loan";
 
 let loansRepository: InMemoryLoansRepository;
 let booksRepository: InMemoryBooksRepository;
