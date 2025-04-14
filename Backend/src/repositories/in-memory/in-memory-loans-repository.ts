@@ -61,10 +61,4 @@ export class InMemoryLoansRepository implements ILoansRepository {
 
 		return updatedLoan;
 	}
-
-	async countActiveLoansFromUser(userId: string): Promise<number> {
-		return this.loans.filter(
-			(loan) => loan.user_id === userId && loan.status === "active",
-		).length;
-	}
 }

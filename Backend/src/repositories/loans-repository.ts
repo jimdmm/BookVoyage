@@ -9,5 +9,4 @@ export interface ILoansRepository {
 		status: string,
 		returnDate?: Date,
 	): Promise<Loan | null>;
-	countActiveLoansFromUser(userId: string): Promise<number>;
 }

@@ -81,8 +81,7 @@ export class InMemoryBooksRepository implements IBooksRepository {
 				(book) =>
 					book.title.includes(query) ||
 					book.author.includes(query) ||
-					book.isbn.includes(query) ||
-					book.publication_year.toString().includes(query),
+					book.isbn.includes(query),
 			)
 			.slice((page - 1) * 10, page * 10);
 	}
