@@ -1,6 +1,6 @@
-import { randomUUID } from "node:crypto";
-import type { Loan, Prisma } from "@prisma/client";
-import type { ILoansRepository } from "../loans-repository";
+import { randomUUID } from 'node:crypto';
+import type { Loan, Prisma } from '@prisma/client';
+import type { ILoansRepository } from '../loans-repository';
 
 export class InMemoryLoansRepository implements ILoansRepository {
 	public loans: Loan[] = [];
@@ -30,7 +30,7 @@ export class InMemoryLoansRepository implements ILoansRepository {
 			book_id: book_id,
 			loan_date: loanDate,
 			return_date: null,
-			status: status || "active",
+			status: status || 'active',
 		} as Loan;
 
 		this.loans.push(loan);

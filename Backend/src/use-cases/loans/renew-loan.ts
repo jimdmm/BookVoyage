@@ -1,7 +1,7 @@
-import type { ILoansRepository } from "@/repositories/loans-repository";
-import type { Loan } from "@prisma/client";
-import { ResourceNotFoundError } from "../errors/resource-not-found-error";
-import { LoanNotActiveError } from "../errors/loan-not-active-error";
+import type { ILoansRepository } from '@/repositories/loans-repository';
+import type { Loan } from '@prisma/client';
+import { LoanNotActiveError } from '../errors/loan-not-active-error';
+import { ResourceNotFoundError } from '../errors/resource-not-found-error';
 
 interface RenewLoanUseCaseRequest {
 	loan_id: string;
@@ -23,13 +23,13 @@ export class RenewLoanUseCase {
 			throw new ResourceNotFoundError();
 		}
 
-		if (loan.status !== "active") {
+		if (loan.status !== 'active') {
 			throw new LoanNotActiveError();
 		}
 
 		const updatedLoan = await this.loansRepository.updateStatus(
 			loan_id,
-			"renewed",
+			'renewed',
 		);
 
 		if (!updatedLoan) {

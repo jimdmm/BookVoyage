@@ -1,5 +1,5 @@
-import type { IBooksRepository } from "@/repositories/books-repository";
-import type { Book } from "@prisma/client";
+import type { IBooksRepository } from '@/repositories/books-repository';
+import type { Book } from '@prisma/client';
 
 interface SearchBooksUseCaseRequest {
 	query: string;

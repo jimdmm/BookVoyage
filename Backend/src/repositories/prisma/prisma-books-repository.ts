@@ -1,6 +1,6 @@
-import type { Book, Prisma } from "@prisma/client";
-import type { IBooksRepository } from "../books-repository";
-import { prisma } from "../../lib/prisma";
+import type { Book, Prisma } from '@prisma/client';
+import { prisma } from '../../lib/prisma';
+import type { IBooksRepository } from '../books-repository';
 
 export class PrismaBooksRepository implements IBooksRepository {
 	async findById(id: string): Promise<Book | null> {

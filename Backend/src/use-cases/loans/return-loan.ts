@@ -1,8 +1,8 @@
-import type { IBooksRepository } from "@/repositories/books-repository";
-import type { ILoansRepository } from "@/repositories/loans-repository";
-import type { Loan } from "@prisma/client";
-import { ResourceNotFoundError } from "../errors/resource-not-found-error";
-import { LoanAlreadyReturnedError } from "../errors/loan-already-returned-error";
+import type { IBooksRepository } from '@/repositories/books-repository';
+import type { ILoansRepository } from '@/repositories/loans-repository';
+import type { Loan } from '@prisma/client';
+import { LoanAlreadyReturnedError } from '../errors/loan-already-returned-error';
+import { ResourceNotFoundError } from '../errors/resource-not-found-error';
 
 interface ReturnLoanUseCaseRequest {
 	loan_id: string;
@@ -27,7 +27,7 @@ export class ReturnLoanUseCase {
 			throw new ResourceNotFoundError();
 		}
 
-		if (loan.status === "returned") {
+		if (loan.status === 'returned') {
 			throw new LoanAlreadyReturnedError();
 		}
 
@@ -39,12 +39,12 @@ export class ReturnLoanUseCase {
 		const returnDate = new Date();
 		const updatedLoan = await this.loansRepository.updateStatus(
 			loan_id,
-			"returned",
+			'returned',
 			returnDate,
 		);
 
 		if (!updatedLoan) {
-			throw new Error("Falha ao atualizar o status do empréstimo");
+			throw new Error('Falha ao atualizar o status do empréstimo');
 		}
 
 		await this.booksRepository.update(loan.book_id, {

@@ -1,6 +1,6 @@
-import { randomUUID } from "node:crypto";
-import type { Book, Prisma } from "@prisma/client";
-import type { IBooksRepository } from "../books-repository";
+import { randomUUID } from 'node:crypto';
+import type { Book, Prisma } from '@prisma/client';
+import type { IBooksRepository } from '../books-repository';
 
 export class InMemoryBooksRepository implements IBooksRepository {
 	public books: Book[] = [];

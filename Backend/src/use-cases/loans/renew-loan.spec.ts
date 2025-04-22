@@ -1,45 +1,45 @@
-import { expect, describe, it, beforeEach, vi } from "vitest";
-import { InMemoryLoansRepository } from "@/repositories/in-memory/in-memory-loans-repository";
-import { RenewLoanUseCase } from "./renew-loan";
-import { ResourceNotFoundError } from "../errors/resource-not-found-error";
-import { LoanNotActiveError } from "../errors/loan-not-active-error";
+import { InMemoryLoansRepository } from '@/repositories/in-memory/in-memory-loans-repository';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { LoanNotActiveError } from '../errors/loan-not-active-error';
+import { ResourceNotFoundError } from '../errors/resource-not-found-error';
+import { RenewLoanUseCase } from './renew-loan';
 
 let loansRepository: InMemoryLoansRepository;
 let sut: RenewLoanUseCase;
 
-describe("Renew Loan Use Case", () => {
+describe('Renew Loan Use Case', () => {
 	beforeEach(() => {
 		loansRepository = new InMemoryLoansRepository();
 		sut = new RenewLoanUseCase(loansRepository);
 	});
 
-	it("should be able to renew an active loan", async () => {
+	it('should be able to renew an active loan', async () => {
 		const loan = await loansRepository.create({
-			user_id: "user-01",
-			book_id: "book-01",
-			status: "active",
+			user_id: 'user-01',
+			book_id: 'book-01',
+			status: 'active',
 		});
 
 		const { loan: renewedLoan } = await sut.execute({
 			loan_id: loan.id,
 		});
 
-		expect(renewedLoan.status).toBe("renewed");
+		expect(renewedLoan.status).toBe('renewed');
 	});
 
-	it("should not be able to renew a non-existent loan", async () => {
+	it('should not be able to renew a non-existent loan', async () => {
 		await expect(() =>
 			sut.execute({
-				loan_id: "non-existent-loan-id",
+				loan_id: 'non-existent-loan-id',
 			}),
 		).rejects.toBeInstanceOf(ResourceNotFoundError);
 	});
 
-	it("should not be able to renew a returned loan", async () => {
+	it('should not be able to renew a returned loan', async () => {
 		const loan = await loansRepository.create({
-			user_id: "user-01",
-			book_id: "book-01",
-			status: "returned",
+			user_id: 'user-01',
+			book_id: 'book-01',
+			status: 'returned',
 		});
 
 		await expect(() =>
@@ -49,11 +49,11 @@ describe("Renew Loan Use Case", () => {
 		).rejects.toBeInstanceOf(LoanNotActiveError);
 	});
 
-	it("should not be able to renew an already renewed loan", async () => {
+	it('should not be able to renew an already renewed loan', async () => {
 		const loan = await loansRepository.create({
-			user_id: "user-01",
-			book_id: "book-01",
-			status: "renewed",
+			user_id: 'user-01',
+			book_id: 'book-01',
+			status: 'renewed',
 		});
 
 		await expect(() =>
@@ -63,14 +63,14 @@ describe("Renew Loan Use Case", () => {
 		).rejects.toBeInstanceOf(LoanNotActiveError);
 	});
 
-	it("should throw an error if the repository update fails", async () => {
+	it('should throw an error if the repository update fails', async () => {
 		const loan = await loansRepository.create({
-			user_id: "user-01",
-			book_id: "book-01",
-			status: "active",
+			user_id: 'user-01',
+			book_id: 'book-01',
+			status: 'active',
 		});
 
-		vi.spyOn(loansRepository, "updateStatus").mockImplementationOnce(
+		vi.spyOn(loansRepository, 'updateStatus').mockImplementationOnce(
 			async () => null,
 		);
 

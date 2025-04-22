@@ -1,7 +1,7 @@
-import type { ILoansRepository } from "@/repositories/loans-repository";
-import type { IUsersRepository } from "@/repositories/users-repository";
-import type { Loan } from "@prisma/client";
-import { ResourceNotFoundError } from "../errors/resource-not-found-error";
+import type { ILoansRepository } from '@/repositories/loans-repository';
+import type { IUsersRepository } from '@/repositories/users-repository';
+import type { Loan } from '@prisma/client';
+import { ResourceNotFoundError } from '../errors/resource-not-found-error';
 
 interface ListUserLoansUseCaseRequest {
 	user_id: string;

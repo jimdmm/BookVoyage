@@ -1,5 +1,5 @@
-import type { IBooksRepository } from "@/repositories/books-repository";
-import { ResourceNotFoundError } from "../errors/resource-not-found-error";
+import type { IBooksRepository } from '@/repositories/books-repository';
+import { ResourceNotFoundError } from '../errors/resource-not-found-error';
 
 export class DeleteBookUseCase {
 	constructor(private booksRepository: IBooksRepository) {}

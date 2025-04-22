@@ -1,4 +1,4 @@
-import type { Loan, Prisma } from "@prisma/client";
+import type { Loan, Prisma } from '@prisma/client';
 
 export interface ILoansRepository {
 	findById(loanId: string): Promise<Loan | null>;

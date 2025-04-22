@@ -1,6 +1,6 @@
-import type { FastifyRequest, FastifyReply } from 'fastify';
-import { makeGetUsersProfileUseCase } from '@/use-cases/factories/make-get-user-profile-use-case';
 import { ResourceNotFoundError } from '@/use-cases/errors/resource-not-found-error';
+import { makeGetUsersProfileUseCase } from '@/use-cases/factories/make-get-user-profile-use-case';
+import type { FastifyReply, FastifyRequest } from 'fastify';
 
 export async function profile(request: FastifyRequest, reply: FastifyReply) {
 	try {

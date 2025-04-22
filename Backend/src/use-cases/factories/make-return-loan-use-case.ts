@@ -1,6 +1,6 @@
-import { PrismaLoansRepository } from "@/repositories/prisma/prisma-loans-repository";
-import { PrismaBooksRepository } from "@/repositories/prisma/prisma-books-repository";
-import { ReturnLoanUseCase } from "../loans/return-loan";
+import { PrismaBooksRepository } from '@/repositories/prisma/prisma-books-repository';
+import { PrismaLoansRepository } from '@/repositories/prisma/prisma-loans-repository';
+import { ReturnLoanUseCase } from '../loans/return-loan';
 
 export function makeReturnLoanUseCase() {
 	const loansRepository = new PrismaLoansRepository();

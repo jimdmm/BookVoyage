@@ -1,7 +1,7 @@
 import type { FastifyInstance } from 'fastify';
-import { usersRoutes } from './controllers/Users/routes';
 import { booksRoutes } from './controllers/Book/routes';
 import { loansRoutes } from './controllers/Loan/routes';
+import { usersRoutes } from './controllers/Users/routes';
 
 export async function appRoutes(app: FastifyInstance) {
 	app.register(usersRoutes);

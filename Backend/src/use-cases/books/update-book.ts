@@ -1,6 +1,6 @@
-import type { IBooksRepository } from "@/repositories/books-repository";
-import type { Book } from "@prisma/client";
-import { ResourceNotFoundError } from "../errors/resource-not-found-error";
+import type { IBooksRepository } from '@/repositories/books-repository';
+import type { Book } from '@prisma/client';
+import { ResourceNotFoundError } from '../errors/resource-not-found-error';
 
 interface UpdateBookUseCaseRequest {
 	id: string;

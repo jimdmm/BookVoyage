@@ -1,6 +1,6 @@
-import type { Loan, Prisma } from "@prisma/client";
-import type { ILoansRepository } from "../loans-repository";
-import { prisma } from "../../lib/prisma";
+import type { Loan, Prisma } from '@prisma/client';
+import { prisma } from '../../lib/prisma';
+import type { ILoansRepository } from '../loans-repository';
 
 export class PrismaLoansRepository implements ILoansRepository {
 	async findById(id: string): Promise<Loan | null> {
@@ -31,7 +31,7 @@ export class PrismaLoansRepository implements ILoansRepository {
 				user_id,
 				book_id,
 				loan_date: loanDate,
-				status: status || "active",
+				status: status || 'active',
 			},
 		});
 

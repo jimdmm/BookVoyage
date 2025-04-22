@@ -1,4 +1,4 @@
-import type { Book, Prisma } from "@prisma/client";
+import type { Book, Prisma } from '@prisma/client';
 
 export interface IBooksRepository {
 	searchMany(query: string, page: number): Promise<Book[]>;
