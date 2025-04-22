@@ -4,7 +4,7 @@ BookVoyage App
 
 ## RF
 - [x] Os usuários poderão se cadastrar no sistema.
-- [ ] Os usuários poderão se autenticar no sistema.
+- [x] Os usuários poderão se autenticar no sistema.
 - [x] Os Administradores poderão adicionar, editar e remover livros do sistema.
 - [x] Os usuários poderão buscar os livros por título ou autor.
 - [x] Os usuários poderão emprestar os livros disponíveis
@@ -19,6 +19,6 @@ BookVoyage App
 
 ## RNF
 - [x] A senha do usuário precisa ser criptografada
-- [ ] O usuário deve ser identificado por um JWT (JSON Web Token);
+- [x] O usuário deve ser identificado por um JWT (JSON Web Token);
 - [x] Os dados da aplicação precisam estar persistidos em um banco PostgreSQL
 - [x] Todas as listas de dados precisam estar paginadas com 10 itens por página
