@@ -23,7 +23,7 @@ export class InMemoryBooksRepository implements IBooksRepository {
 			title: title,
 			author: author,
 			isbn: isbn,
-			publication_year: new Date(publication_year).getFullYear(),
+			publication_year: publication_year,
 			quantity_available: Number(quantity_available),
 			created_at: new Date(),
 		};

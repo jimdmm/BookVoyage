@@ -23,7 +23,7 @@ export class PrismaBooksRepository implements IBooksRepository {
 				title,
 				author,
 				isbn,
-				publication_year: new Date(publication_year).getFullYear(),
+				publication_year: publication_year,
 				quantity_available: Number(quantity_available),
 			},
 		});
